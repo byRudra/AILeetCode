@@ -4,15 +4,19 @@
 
 `Array`
 
-## Approach
+## Intuition  
+The longest run of 1’s can be discovered by scanning the array once while keeping track of the length of the current run. Whenever a 0 appears the current run ends and must be reset. The maximum of all observed runs is the answer.
 
-Accepted easy solution in Java.
-Relevant topics: Array.
+## Approach  
+Initialize `maxCount` and `curCount` to 0. Iterate through `nums` with a for‑each loop.  
+- If the element is 0, set `curCount` back to 0 and continue to the next element.  
+- If the element is 1, increment `curCount`. After the increment, update `maxCount` with `Math.max(curCount, maxCount)`.  
 
-## Complexity
+At the end of the traversal, `maxCount` holds the length of the longest consecutive sequence of 1’s, which is returned.
 
-- **Time:** _not analysed_
-- **Space:** _not analysed_
+## Complexity  
+- **Time:** O(n) – each element is examined exactly once.  
+- **Space:** O(1) – only two integer variables are used regardless of input size.
 
 ## Solution (Java)
 
@@ -36,6 +40,6 @@ class Solution {
 
 ---
 
-**Runtime** 3 ms (beats 59.1%) · **Memory** 52.9 MB (beats 10.5%)
+**Runtime** 3 ms (beats 59.1%) · **Memory** 52.7 MB (beats 26.3%)
 
 <sub>Synced by AILeetHub on 2026-09-04.</sub>
