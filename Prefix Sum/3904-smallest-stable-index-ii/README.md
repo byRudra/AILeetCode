@@ -5,23 +5,18 @@
 `Array` · `Prefix Sum`
 
 ## Intuition  
-For each index *i* we need the largest value up to *i* and the smallest value from *i* to the end.  
-If we can answer the second part in constant time for every *i*, we can scan once from left to right, keeping the running maximum, and stop at the first index whose difference is ≤ *k*.
+The instability score at index i depends only on two values: the largest element seen so far from the left (prefix maximum) and the smallest element that can appear from i to the end (suffix minimum). If we know these two arrays, we can evaluate the score for every i in a single pass and stop at the first index that satisfies the bound k.
 
 ## Approach  
-1. **Suffix minima** – Traverse the array from right to left, storing at each position the minimum value seen so far.  
-   `suffixMin[i] = min(nums[i], suffixMin[i+1])`.  
-   After this pass, `suffixMin[i]` equals `min(nums[i…n‑1])`.  
-2. **Prefix maximum & check** – Scan the array from left to right, maintaining the maximum value seen so far (`max`).  
-   For each index *i*, compute `max - suffixMin[i]`.  
-   If this difference is ≤ *k*, return *i* immediately; otherwise continue.  
-3. If no index satisfies the condition, return –1.
+1. **Suffix minima** – Scan the array from right to left, building `suffixMin[i]` as the minimum of `nums[i]` and `suffixMin[i+1]`. After this pass, `suffixMin[i]` equals `min(nums[i..n‑1])`.  
+2. **Forward scan** – Initialise `maxSoFar` to negative infinity. Iterate i from 0 to n‑1, updating `maxSoFar = max(maxSoFar, nums[i])`. The instability score at i is `maxSoFar - suffixMin[i]`. If this value ≤ k, return i immediately.  
+3. If the loop finishes without a match, return –1.
 
-The algorithm uses the pre‑computed suffix minima to evaluate each instability score in O(1) time, guaranteeing the earliest stable index is found.
+The algorithm directly follows the definition of the score and guarantees the smallest qualifying index because we examine indices in increasing order.
 
 ## Complexity  
-- **Time:** O(n) – one backward pass to build suffix minima and one forward pass to find the answer.  
-- **Space:** O(n) – an auxiliary array of length *n* stores the suffix minima.
+- **Time:** O(n) – one backward pass to fill `suffixMin` and one forward pass to test each index.  
+- **Space:** O(n) – the extra array `suffixMin` stores a value for each position.
 
 ## Solution (Java)
 
@@ -48,6 +43,6 @@ class Solution {
 
 ---
 
-**Runtime** 4 ms (beats 88.5%) · **Memory** 133 MB (beats 36.3%)
+**Runtime** 4 ms (beats 88.5%) · **Memory** 133.5 MB (beats 8.0%)
 
 <sub>Synced by AILeetHub on 2026-09-04.</sub>
