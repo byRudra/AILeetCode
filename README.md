@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**268 problems solved**
+**269 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 147  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 111  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 147  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -276,6 +276,7 @@ _Synced by AILeetHub._
 | 3875 | [Construct Uniform Parity Array I](Math/3875-construct-uniform-parity-array-i/) | Easy | Math | java |
 | 3876 | [Construct Uniform Parity Array II](Math/3876-construct-uniform-parity-array-ii/) | Medium | Math | java |
 | 3903 | [Smallest Stable Index I](Prefix%20Sum/3903-smallest-stable-index-i/) | Easy | Prefix Sum | java |
+| 3904 | [Smallest Stable Index II](Prefix%20Sum/3904-smallest-stable-index-ii/) | Medium | Prefix Sum | Java |
 | 3925 | [Concatenate Array With Reverse](Simulation/3925-concatenate-array-with-reverse/) | Easy | Simulation | java |
 | 4038 | [Count Integers Appearing in a Single Block](Misc/4038-count-integers-appearing-in-a-single-block/) | Easy | Misc | java |
 
