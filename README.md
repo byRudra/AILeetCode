@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**267 problems solved**
+**268 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 146  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 111  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 147  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 111  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -241,6 +241,7 @@ _Synced by AILeetHub._
 | 2948 | [Make Lexicographically Smallest Array by Swapping Elements](Union-Find/2948-make-lexicographically-smallest-array-by-swapping-elements/) | Medium | Union-Find | java |
 | 2958 | [Length of Longest Subarray With at Most K Frequency](Sliding%20Window/2958-length-of-longest-subarray-with-at-most-k-frequency/) | Medium | Sliding Window | java |
 | 2965 | [Find Missing and Repeated Values](Math/2965-find-missing-and-repeated-values/) | Easy | Math | java |
+| 3069 | [Distribute Elements Into Two Arrays I](Simulation/3069-distribute-elements-into-two-arrays-i/) | Easy | Simulation | Java |
 | 3070 | [Count Submatrices with Top-Left Element and Sum Less Than k](Prefix%20Sum/3070-count-submatrices-with-top-left-element-and-sum-less-than-k/) | Medium | Prefix Sum | java |
 | 3090 | [Maximum Length Substring With Two Occurrences](Sliding%20Window/3090-maximum-length-substring-with-two-occurrences/) | Easy | Sliding Window | java |
 | 3110 | [Score of a String](String/3110-score-of-a-string/) | Easy | String | java |
