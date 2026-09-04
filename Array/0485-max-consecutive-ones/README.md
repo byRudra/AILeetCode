@@ -5,18 +5,40 @@
 `Array`
 
 ## Intuition  
-The longest run of 1’s can be discovered by scanning the array once while keeping track of the length of the current run. Whenever a 0 appears the current run ends and must be reset. The maximum of all observed runs is the answer.
+The key observation is that the length of the current run of `1`s can be maintained while scanning the array once, and any encounter of a `0` instantly terminates that run. Therefore we only need two counters: one (`curCount`) that tracks the length of the ongoing run, and another (`maxCount`) that records the greatest length seen so far. A naïve solution might examine every possible sub‑array or store indices of all `1`s, both of which would require extra passes or additional memory. By resetting `curCount` at each `0` we eliminate the need for any auxiliary data structures, yielding a pure linear‑time, constant‑space algorithm. This follows the classic **single‑pass counting** pattern.
 
 ## Approach  
-Initialize `maxCount` and `curCount` to 0. Iterate through `nums` with a for‑each loop.  
-- If the element is 0, set `curCount` back to 0 and continue to the next element.  
-- If the element is 1, increment `curCount`. After the increment, update `maxCount` with `Math.max(curCount, maxCount)`.  
+1. **Initialize** `maxCount = 0` and `curCount = 0`.  
+2. **Iterate** over each element `num` in `nums` using the enhanced `for` loop. The loop terminates when the iterator has visited the last element.  
+   - **Invariant:** At the start of each iteration, `curCount` equals the length of the consecutive `1`s that end immediately before the current index.  
+3. **If** `num == 0`  
+   - Set `curCount = 0` to discard the previous run.  
+   - `continue` to the next iteration, leaving `maxCount` unchanged.  
+   - *Why `=` not `-=`?* Because any preceding run is completely invalidated by a `0`.  
+4. **Else** (`num == 1`)  
+   - Increment `curCount++` to extend the current run.  
+   - Update `maxCount = Math.max(curCount, maxCount)`. This ensures `maxCount` always stores the largest run encountered so far.  
+5. **After the loop**, return `maxCount`.  
+   - Edge handling: The constraints guarantee at least one element, so no special empty‑array guard is needed. The algorithm also works when all entries are `0` (returns `0`) or all are `1` (returns `nums.length`).  
 
-At the end of the traversal, `maxCount` holds the length of the longest consecutive sequence of 1’s, which is returned.
+## Dry Run  
+
+**Input:** `nums = [1, 1, 0, 1, 1, 1]`
+
+| Step | `num` | `curCount` (after update) | `maxCount` (after update) | Note |
+|------|-------|---------------------------|---------------------------|------|
+| 1    | 1     | 1                         | 1                         | start first run |
+| 2    | 1     | 2                         | 2                         | extend run |
+| 3    | 0     | 0                         | 2                         | run broken, reset |
+| 4    | 1     | 1                         | 2                         | new run begins |
+| 5    | 1     | 2                         | 2                         | extend new run |
+| 6    | 1     | 3                         | 3                         | extend, new max found |
+
+After processing all elements, `curCount` holds the length of the trailing run (`3`) and `maxCount` holds the overall maximum consecutive `1`s (`3`). The method returns `3`, which matches the expected answer.
 
 ## Complexity  
-- **Time:** O(n) – each element is examined exactly once.  
-- **Space:** O(1) – only two integer variables are used regardless of input size.
+- **Time:** O(n) – the single `for` loop visits each of the `n` elements exactly once, and the body performs only constant‑time operations.  
+- **Space:** O(1) – only two integer variables (`maxCount` and `curCount`) are used regardless of input size; the output integer does not count toward extra space.
 
 ## Solution (Java)
 
