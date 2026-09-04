@@ -128,7 +128,7 @@ _Synced by AILeetHub._
 | 409 | [Longest Palindrome](Greedy/0409-longest-palindrome/) | Easy | Greedy | java |
 | 416 | [Partition Equal Subset Sum](Dynamic%20Programming/0416-partition-equal-subset-sum/) | Medium | Dynamic Programming | java |
 | 448 | [Find All Numbers Disappeared in an Array](Hash%20Table/0448-find-all-numbers-disappeared-in-an-array/) | Easy | Hash Table | java |
-| 485 | [Max Consecutive Ones](Array/0485-max-consecutive-ones/) | Easy | Array | java |
+| 485 | [Max Consecutive Ones](Array/0485-max-consecutive-ones/) | Easy | Array | Java |
 | 496 | [Next Greater Element I](Monotonic%20Stack/0496-next-greater-element-i/) | Easy | Monotonic Stack | java |
 | 503 | [Next Greater Element II](Monotonic%20Stack/0503-next-greater-element-ii/) | Medium | Monotonic Stack | java |
 | 509 | [Fibonacci Number](Dynamic%20Programming/0509-fibonacci-number/) | Easy | Dynamic Programming | java |
