@@ -5,18 +5,43 @@
 `Array` · `Prefix Sum`
 
 ## Intuition  
-The instability score at index i depends only on two values: the largest element seen so far from the left (prefix maximum) and the smallest element that can appear from i to the end (suffix minimum). If we know these two arrays, we can evaluate the score for every i in a single pass and stop at the first index that satisfies the bound k.
+The instability score at index i is the difference between the largest value seen so far (the prefix maximum) and the smallest value that can still appear (the suffix minimum). If we know the suffix minimum for every position, we can evaluate the score in a single forward scan while maintaining the running prefix maximum. A naïve solution would recompute the minimum of the suffix for each i, costing O(n²). Pre‑computing the suffix minima removes that repeated work and yields a linear‑time answer. This is a classic **prefix‑suffix** pattern.
 
 ## Approach  
-1. **Suffix minima** – Scan the array from right to left, building `suffixMin[i]` as the minimum of `nums[i]` and `suffixMin[i+1]`. After this pass, `suffixMin[i]` equals `min(nums[i..n‑1])`.  
-2. **Forward scan** – Initialise `maxSoFar` to negative infinity. Iterate i from 0 to n‑1, updating `maxSoFar = max(maxSoFar, nums[i])`. The instability score at i is `maxSoFar - suffixMin[i]`. If this value ≤ k, return i immediately.  
-3. If the loop finishes without a match, return –1.
+1. **Build suffix minima** – Create an array `suffixMin` of length n.  
+   *Initialize*: `suffixMin[n‑1] = nums[n‑1]`.  
+   *Loop*: for `i = n‑2 … 0` set `suffixMin[i] = min(nums[i], suffixMin[i+1])`.  
+   *Invariant*: after processing index i, `suffixMin[i]` equals the minimum of `nums[i…n‑1]`.  
+   *Edge*: works for n = 1 because the loop body is skipped and the single element is stored.  
 
-The algorithm directly follows the definition of the score and guarantees the smallest qualifying index because we examine indices in increasing order.
+2. **Scan forward keeping the prefix maximum** – Initialise `max = Integer.MIN_VALUE`.  
+   *Loop*: for `i = 0 … n‑1` do `max = max(max, nums[i])`.  
+   *Check*: if `max - suffixMin[i] <= k` return `i`.  
+   *Invariant*: before the check, `max` is the maximum of `nums[0…i]`.  
+
+3. **No stable index** – If the forward loop finishes without returning, output `-1`.  
+
+**Why the checks are correct**  
+- The suffix array guarantees `suffixMin[i]` is the exact minimum of the right part, so no off‑by‑one errors arise.  
+- The condition uses `<= k` as required by the definition of a stable index.  
+- Using `Integer.MIN_VALUE` ensures the first iteration correctly sets `max` to `nums[0]`.  
+
+## Dry Run  
+
+Input: `nums = [5, 0, 1, 4]`, `k = 3`
+
+| i | max (prefix) | suffixMin[i] | max - suffixMin[i] | note |
+|---|--------------|--------------|--------------------|------|
+| 0 | 5            | 0            | 5                  | max updated, condition false |
+| 1 | 5            | 0            | 5                  | max unchanged, condition false |
+| 2 | 5            | 1            | 4                  | condition still > k |
+| 3 | 5            | 4            | 1                  | 1 ≤ 3 → return **3** |
+
+After the fourth iteration `i = 3`, the instability score satisfies the bound, so the algorithm returns index 3, which matches the expected answer.
 
 ## Complexity  
-- **Time:** O(n) – one backward pass to fill `suffixMin` and one forward pass to test each index.  
-- **Space:** O(n) – the extra array `suffixMin` stores a value for each position.
+- **Time:** O(n) – the backward pass fills `suffixMin` in n‑1 steps, and the forward pass examines each element once; the total work is linear.  
+- **Space:** O(n) – the extra `suffixMin` array stores one integer per input element (output array or recursion stack not used).
 
 ## Solution (Java)
 
@@ -43,6 +68,6 @@ class Solution {
 
 ---
 
-**Runtime** 4 ms (beats 88.5%) · **Memory** 133.5 MB (beats 8.0%)
+**Runtime** 3 ms (beats 100.0%) · **Memory** 133.6 MB (beats 5.3%)
 
 <sub>Synced by AILeetHub on 2026-09-04.</sub>
