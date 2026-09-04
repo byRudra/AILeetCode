@@ -5,79 +5,102 @@
 `Two Pointers` · `String`
 
 ## Intuition  
-When we walk through both strings simultaneously, each step consumes exactly one character from the string whose turn it is. Because the turn flips after every character, the two pointers `i` and `j` stay perfectly synchronized with the alternating pattern. A naïve solution might concatenate the whole first string, then splice the second one character by character, which would require extra passes or index arithmetic. The observation that a single boolean flag (`turnWord`) can dictate which pointer to advance eliminates any need for a second pass or auxiliary data structures, yielding a classic two‑pointer interleaving.
+The key observation is that the merge can be performed by scanning both strings with a single index `i` and, at each step, appending the character from `word1` (if it exists) followed immediately by the character from `word2` (if it exists). This eliminates the need for two separate pointers or a separate “turn” flag, because the presence check (`i < length`) already tells us whether a character should be taken. A naïve solution would alternate between two pointers and maintain a boolean to decide whose turn it is, which adds extra state and a second loop for the tail. By collapsing the two‑pointer alternation into one index and two conditional appends, we achieve the same result in a single pass. The pattern used here is the **two‑pointer (single‑index) traversal**.
 
 ## Approach  
-1. **Initialize** `result` as an empty string, `i = 0`, `j = 0`, and `turnWord = true` (meaning the next character must come from `word1`).  
-2. **Main interleaving loop** – `while (i < word1.length() && j < word2.length())`  
-   - *Invariant*: before each iteration, `result` already contains the correctly interleaved prefix of length `i + j`.  
-   - If `turnWord` is `true`, append `word1.charAt(i)` to `result` and increment `i`; otherwise append `word2.charAt(j)` and increment `j`.  
-   - Flip `turnWord` (`turnWord = !turnWord`) so the next iteration takes the opposite string.  
-   - The loop exits as soon as one of the strings is exhausted, guaranteeing that no index out‑of‑bounds occurs.  
-3. **Residual characters from `word1`** – `while (i < word1.length())`  
-   - Append the remaining characters of `word1` one by one. This handles the case where `word1` is longer; the loop condition ensures we stop exactly at the end.  
-4. **Residual characters from `word2`** – `while (j < word2.length())`  
-   - Symmetrically append any leftover characters of `word2`.  
-5. **Return** the built `result`.  
+1. **Initialise** a `StringBuilder result` and an integer `i = 0`.  
+2. **Loop condition:** `while (i < word1.length() || i < word2.length())`.  
+   - *Invariant:* before each iteration, all characters with index `< i` from both strings have already been appended to `result` in the correct alternating order.  
+3. **Append from `word1`:**  
+   - If `i < word1.length()`, execute `result.append(word1.charAt(i))`.  
+   - This guard prevents `IndexOutOfBoundsException` when `word1` is shorter.  
+4. **Append from `word2`:**  
+   - If `i < word2.length()`, execute `result.append(word2.charAt(i))`.  
+   - Symmetrically protects against the shorter `word2`.  
+5. **Increment** `i++` to advance to the next position in both strings.  
+6. **Exit** the loop when `i` has reached the end of *both* strings; at that point the invariant guarantees that `result` contains the fully merged sequence.  
+7. **Return** `result.toString()`.  
 
-Edge cases:  
-- If either input is empty, the main loop never runs and the appropriate residual loop copies the non‑empty string.  
-- The `<=` vs `<` choice is irrelevant here because we compare indices against `length()`, which is exclusive; using `<` correctly prevents off‑by‑one errors.  
+Edge‑case handling:  
+- Empty or single‑character strings are covered because the loop runs as long as *either* string still has characters.  
+- No off‑by‑one errors: the checks use `<` (strictly less) which matches zero‑based indexing.  
+- The algorithm chooses the convention “append from `word1` first” because the problem statement specifies starting with `word1`.
 
 ## Dry Run  
 
-**Input**: `word1 = "ab"`, `word2 = "pqrs"`
+**Input:** `word1 = "ab", word2 = "pqrs"`
 
-| Iteration | i | j | turnWord | result | Change |
-|-----------|---|---|----------|--------|--------|
-| 0 (init)  | 0 | 0 | true     | ""     | – |
-| 1         | 1 | 0 | false    | "a"    | took `a` from `word1` |
-| 2         | 1 | 1 | true     | "ap"   | took `p` from `word2` |
-| 3         | 2 | 1 | false    | "apb"  | took `b` from `word1` |
-| 4         | 2 | 2 | true     | "apbq" | took `q` from `word2` (main loop ends, `i==2`) |
-| 5         | 2 | 3 | –        | "apbqr"| residual loop on `word2` adds `r` |
-| 6         | 2 | 4 | –        | "apbqrs"| residual loop on `word2` adds `s` |
+| i | result (after iteration) | note |
+|---|--------------------------|------|
+| 0 | "a" → then "ap"          | both strings have index 0, append `a` then `p` |
+| 1 | "apb" → then "apbq"      | both strings have index 1, append `b` then `q` |
+| 2 | "apbq" → then "apbqrs"   | `i` ≥ `word1.length()`, only `word2` supplies `r` and `s` |
+| 3 | loop ends                | `i` (3) ≥ both lengths, exit |
 
-The main loop stops when `i` reaches `word1.length()`. The remaining two characters of `word2` are appended by the second residual loop, yielding the final merged string `"apbqrs"`.
+Final `result` = **"apbqrs"**, which matches the required merged string because all characters from `word1` appear in order, each followed by the corresponding character from `word2` when available, and the remaining tail of the longer string is appended.
 
 ## Complexity  
-- **Time:** O(n + m) – each character of `word1` (length *n*) and `word2` (length *m*) is visited exactly once by the three while loops.  
-- **Space:** O(1) extra – only a few integer counters and a boolean flag are used; the output string itself is not counted against the auxiliary space budget.
+- **Time:** O(n + m) – the loop iterates `max(word1.length(), word2.length())` times, performing constant‑time appends each pass.  
+- **Space:** O(n + m) – the `StringBuilder` stores the output of length `n + m`; auxiliary space is O(1) besides the builder.
 
 ## Solution (Java)
 
 ```java
+// class Solution {
+//     public String mergeAlternately(String word1, String word2) {
+//         String result = "";
+//         int i = 0, j = 0;
+//         boolean turnWord = true;
+//         while (i < word1.length() && j < word2.length()) {
+//              if (turnWord) {
+//                 result += word1.charAt(i);
+//                 i++;
+//             } else {
+//                 result += word2.charAt(j);
+//                 j++;
+//             }
+
+//             turnWord = !turnWord;
+//         }
+//         while (i < word1.length()) {
+//             result += word1.charAt(i);
+//             i++;
+//         }
+//         while (j < word2.length()) {
+//             result += word2.charAt(j);
+//             j++;
+//         }
+//         return result;
+//     }
+// }
+
+//Better approach
 class Solution {
     public String mergeAlternately(String word1, String word2) {
-        String result = "";
-        int i = 0, j = 0;
-        boolean turnWord = true;
-        while (i < word1.length() && j < word2.length()) {
-             if (turnWord) {
-                result += word1.charAt(i);
-                i++;
-            } else {
-                result += word2.charAt(j);
-                j++;
+        StringBuilder result = new StringBuilder();
+
+        int i = 0;
+
+        while (i < word1.length() || i < word2.length()) {
+
+            if (i < word1.length()) {
+                result.append(word1.charAt(i));
             }
 
-            turnWord = !turnWord;
-        }
-        while (i < word1.length()) {
-            result += word1.charAt(i);
+            if (i < word2.length()) {
+                result.append(word2.charAt(i));
+            }
+
             i++;
         }
-        while (j < word2.length()) {
-            result += word2.charAt(j);
-            j++;
-        }
-        return result;
+
+        return result.toString();
     }
 }
 ```
 
 ---
 
-**Runtime** 4 ms (beats 19.8%) · **Memory** 44 MB (beats 11.0%)
+**Runtime** 1 ms (beats 96.1%) · **Memory** 42.8 MB (beats 89.1%)
 
 <sub>Synced by AILeetHub on 2026-09-04.</sub>
