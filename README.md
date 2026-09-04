@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**269 problems solved**
+**270 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 147  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 148  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -159,6 +159,7 @@ _Synced by AILeetHub._
 | 840 | [Magic Squares In Grid](Math/0840-magic-squares-in-grid/) | Medium | Math | java |
 | 868 | [Binary Gap](Bit%20Manipulation/0868-binary-gap/) | Easy | Bit Manipulation | java |
 | 875 | [Koko Eating Bananas](Binary%20Search/0875-koko-eating-bananas/) | Medium | Binary Search | java |
+| 876 | [Middle of the Linked List](Two%20Pointers/0876-middle-of-the-linked-list/) | Easy | Two Pointers | Java |
 | 877 | [Stone Game](Dynamic%20Programming/0877-stone-game/) | Medium | Dynamic Programming | java |
 | 885 | [Spiral Matrix III](Simulation/0885-spiral-matrix-iii/) | Medium | Simulation | java |
 | 896 | [Monotonic Array](Array/0896-monotonic-array/) | Easy | Array | java |
