@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**270 problems solved**
+**271 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 148  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -197,6 +197,7 @@ _Synced by AILeetHub._
 | 1732 | [Find the Highest Altitude](Prefix%20Sum/1732-find-the-highest-altitude/) | Easy | Prefix Sum | java |
 | 1752 | [Check if Array Is Sorted and Rotated](Array/1752-check-if-array-is-sorted-and-rotated/) | Easy | Array | java |
 | 1757 | [Recyclable and Low Fat Products](Database/1757-recyclable-and-low-fat-products/) | Easy | Database | mysql |
+| 1768 | [Merge Strings Alternately](Two%20Pointers/1768-merge-strings-alternately/) | Easy | Two Pointers | Java |
 | 1789 | [Primary Department for Each Employee](Database/1789-primary-department-for-each-employee/) | Easy | Database | mysql |
 | 1848 | [Minimum Distance to the Target Element](Array/1848-minimum-distance-to-the-target-element/) | Easy | Array | java |
 | 1854 | [Maximum Population Year](Prefix%20Sum/1854-maximum-population-year/) | Easy | Prefix Sum | java |
