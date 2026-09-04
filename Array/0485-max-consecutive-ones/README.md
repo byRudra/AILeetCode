@@ -5,40 +5,43 @@
 `Array`
 
 ## Intuition  
-The key observation is that the length of the current run of `1`s can be maintained while scanning the array once, and any encounter of a `0` instantly terminates that run. Therefore we only need two counters: one (`curCount`) that tracks the length of the ongoing run, and another (`maxCount`) that records the greatest length seen so far. A naïve solution might examine every possible sub‑array or store indices of all `1`s, both of which would require extra passes or additional memory. By resetting `curCount` at each `0` we eliminate the need for any auxiliary data structures, yielding a pure linear‑time, constant‑space algorithm. This follows the classic **single‑pass counting** pattern.
+The key observation is that the length of the current run of 1’s can be maintained incrementally: whenever a 0 appears the run ends and the counter must be reset to 0, otherwise the run length grows by 1. By keeping a second variable that records the largest run seen so far, we obtain the answer in a single left‑to‑right pass. A naïve solution might scan every possible sub‑array or store indices of 1’s, which would require extra passes or O(n) auxiliary space. The insight eliminates both by using two simple integer variables—often described as the “running count” pattern.
 
 ## Approach  
 1. **Initialize** `maxCount = 0` and `curCount = 0`.  
-2. **Iterate** over each element `num` in `nums` using the enhanced `for` loop. The loop terminates when the iterator has visited the last element.  
-   - **Invariant:** At the start of each iteration, `curCount` equals the length of the consecutive `1`s that end immediately before the current index.  
+2. **Iterate** over each element `num` in `nums` (the loop ends when the array is exhausted).  
+   - **Invariant** before each iteration: `curCount` equals the length of the consecutive 1’s segment that ends at the previous index, and `maxCount` is the maximum length observed up to that point.  
 3. **If** `num == 0`  
-   - Set `curCount = 0` to discard the previous run.  
-   - `continue` to the next iteration, leaving `maxCount` unchanged.  
-   - *Why `=` not `-=`?* Because any preceding run is completely invalidated by a `0`.  
+   - Set `curCount = 0` to discard the broken segment.  
+   - `continue` to the next element; `maxCount` is unchanged because a 0 cannot extend a run.  
 4. **Else** (`num == 1`)  
-   - Increment `curCount++` to extend the current run.  
-   - Update `maxCount = Math.max(curCount, maxCount)`. This ensures `maxCount` always stores the largest run encountered so far.  
-5. **After the loop**, return `maxCount`.  
-   - Edge handling: The constraints guarantee at least one element, so no special empty‑array guard is needed. The algorithm also works when all entries are `0` (returns `0`) or all are `1` (returns `nums.length`).  
+   - Execute `curCount++` to extend the current run.  
+   - Update `maxCount = Math.max(curCount, maxCount)`. This ensures `maxCount` always stores the best run seen so far.  
+5. After the loop finishes (i.e., all elements processed), **return** `maxCount`.  
+
+Edge considerations handled by the code:  
+- The constraints guarantee at least one element, so no explicit empty‑array guard is needed.  
+- For a single‑element array the loop runs once, correctly yielding 1 or 0.  
+- All‑zero input leaves `maxCount` at its initial 0.  
+- All‑one input lets `curCount` grow to `nums.length`, and `maxCount` follows it.  
 
 ## Dry Run  
-
 **Input:** `nums = [1, 1, 0, 1, 1, 1]`
 
-| Step | `num` | `curCount` (after update) | `maxCount` (after update) | Note |
-|------|-------|---------------------------|---------------------------|------|
-| 1    | 1     | 1                         | 1                         | start first run |
-| 2    | 1     | 2                         | 2                         | extend run |
-| 3    | 0     | 0                         | 2                         | run broken, reset |
-| 4    | 1     | 1                         | 2                         | new run begins |
-| 5    | 1     | 2                         | 2                         | extend new run |
-| 6    | 1     | 3                         | 3                         | extend, new max found |
+| i (index) | num | curCount (after step) | maxCount (after step) | note |
+|-----------|-----|-----------------------|-----------------------|------|
+| 0 | 1 | 1 | 1 | start first run |
+| 1 | 1 | 2 | 2 | extend run |
+| 2 | 0 | 0 | 2 | reset on zero |
+| 3 | 1 | 1 | 2 | new run begins |
+| 4 | 1 | 2 | 2 | run length matches current max |
+| 5 | 1 | 3 | 3 | run exceeds previous max |
 
-After processing all elements, `curCount` holds the length of the trailing run (`3`) and `maxCount` holds the overall maximum consecutive `1`s (`3`). The method returns `3`, which matches the expected answer.
+After processing the last element, `maxCount` equals 3, which is the length of the longest consecutive block of 1’s.
 
 ## Complexity  
-- **Time:** O(n) – the single `for` loop visits each of the `n` elements exactly once, and the body performs only constant‑time operations.  
-- **Space:** O(1) – only two integer variables (`maxCount` and `curCount`) are used regardless of input size; the output integer does not count toward extra space.
+- **Time:** O(n) – the `for` loop visits each of the `n` elements exactly once, and the body performs only constant‑time operations.  
+- **Space:** O(1) – only two integer variables (`maxCount` and `curCount`) are used regardless of input size; the output array is not counted.
 
 ## Solution (Java)
 
