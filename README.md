@@ -20,7 +20,7 @@ _Synced by AILeetHub._
 | 11 | [Container With Most Water](Two%20Pointers/0011-container-with-most-water/) | Medium | Two Pointers | java |
 | 13 | [Roman to Integer](Math/0013-roman-to-integer/) | Easy | Math | java |
 | 14 | [Longest Common Prefix](Trie/0014-longest-common-prefix/) | Easy | Trie | java |
-| 15 | [3Sum](Two%20Pointers/0015-3sum/) | Medium | Two Pointers | java |
+| 15 | [3Sum](Two%20Pointers/0015-3sum/) | Medium | Two Pointers | Java |
 | 19 | [Remove Nth Node From End of List](Two%20Pointers/0019-remove-nth-node-from-end-of-list/) | Medium | Two Pointers | java |
 | 20 | [Valid Parentheses](Stack/0020-valid-parentheses/) | Easy | Stack | java |
 | 21 | [Merge Two Sorted Lists](Recursion/0021-merge-two-sorted-lists/) | Easy | Recursion | cpp |
