@@ -97,7 +97,7 @@ _Synced by AILeetHub._
 | 182 | [Duplicate Emails](Database/0182-duplicate-emails/) | Easy | Database | pythondata |
 | 183 | [Customers Who Never Order](Database/0183-customers-who-never-order/) | Easy | Database | mysql |
 | 184 | [Department Highest Salary](Database/0184-department-highest-salary/) | Medium | Database | mysql |
-| 189 | [Rotate Array](Two%20Pointers/0189-rotate-array/) | Medium | Two Pointers | java |
+| 189 | [Rotate Array](Two%20Pointers/0189-rotate-array/) | Medium | Two Pointers | Java |
 | 196 | [Delete Duplicate Emails](Database/0196-delete-duplicate-emails/) | Easy | Database | mysql |
 | 197 | [Rising Temperature](Database/0197-rising-temperature/) | Easy | Database | mysql |
 | 198 | [House Robber](Dynamic%20Programming/0198-house-robber/) | Medium | Dynamic Programming | java |
