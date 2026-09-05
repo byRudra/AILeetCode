@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**276 problems solved**
+**277 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 150  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 116  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 150  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 116  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 11
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -72,6 +72,7 @@ _Synced by AILeetHub._
 | 125 | [Valid Palindrome](Two%20Pointers/0125-valid-palindrome/) | Easy | Two Pointers | java |
 | 128 | [Longest Consecutive Sequence](Union-Find/0128-longest-consecutive-sequence/) | Medium | Union-Find | java |
 | 134 | [Gas Station](Greedy/0134-gas-station/) | Medium | Greedy | java |
+| 135 | [Candy](Greedy/0135-candy/) | Hard | Greedy | Java |
 | 136 | [Single Number](Bit%20Manipulation/0136-single-number/) | Easy | Bit Manipulation | java |
 | 138 | [Copy List with Random Pointer](Hash%20Table/0138-copy-list-with-random-pointer/) | Medium | Hash Table | Java |
 | 141 | [Linked List Cycle](Two%20Pointers/0141-linked-list-cycle/) | Easy | Two Pointers | Java |
