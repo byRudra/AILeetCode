@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**273 problems solved**
+**274 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 114  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 115  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -74,6 +74,7 @@ _Synced by AILeetHub._
 | 134 | [Gas Station](Greedy/0134-gas-station/) | Medium | Greedy | java |
 | 136 | [Single Number](Bit%20Manipulation/0136-single-number/) | Easy | Bit Manipulation | java |
 | 141 | [Linked List Cycle](Two%20Pointers/0141-linked-list-cycle/) | Easy | Two Pointers | java |
+| 143 | [Reorder List](Two%20Pointers/0143-reorder-list/) | Medium | Two Pointers | Java |
 | 144 | [Binary Tree Preorder Traversal](Binary%20Tree/0144-binary-tree-preorder-traversal/) | Easy | Binary Tree | java |
 | 145 | [Binary Tree Postorder Traversal](Binary%20Tree/0145-binary-tree-postorder-traversal/) | Easy | Binary Tree | java |
 | 148 | [Sort List](Divide%20and%20Conquer/0148-sort-list/) | Medium | Divide and Conquer | java |
