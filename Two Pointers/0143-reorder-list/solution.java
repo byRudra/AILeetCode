@@ -34,14 +34,12 @@ class Solution {
         // now merging both of them
         ListNode originalList = head;
         while (prev != null) {
-            ListNode next1 = originalList.next;
-            ListNode next2 = prev.next;
-
+            ListNode temp = originalList.next;
             originalList.next = prev;
-            prev.next = next1;
-
-            originalList = next1;
-            prev = next2;
+            originalList = prev;
+            prev = prev.next;
+            originalList.next = temp;
+            originalList = temp;
         }
     }
 }
