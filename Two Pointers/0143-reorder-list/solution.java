@@ -33,13 +33,25 @@ class Solution {
 
         // now merging both of them
         ListNode originalList = head;
+        // with one variable 
+        // while (prev != null) {
+        //     ListNode temp = originalList.next;
+        //     originalList.next = prev;
+        //     originalList = prev;
+        //     prev = prev.next;
+        //     originalList.next = temp;
+        //     originalList = temp;
+        // }
+        // with two
         while (prev != null) {
-            ListNode temp = originalList.next;
+            ListNode next1 = originalList.next;
+            ListNode next2 = prev.next;
+
             originalList.next = prev;
-            originalList = prev;
-            prev = prev.next;
-            originalList.next = temp;
-            originalList = temp;
+            prev.next = next1;
+
+            originalList = next1;
+            prev = next2;
         }
     }
 }
