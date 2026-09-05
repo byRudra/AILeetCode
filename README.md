@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**274 problems solved**
+**275 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 115  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 150  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 115  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -98,6 +98,7 @@ _Synced by AILeetHub._
 | 183 | [Customers Who Never Order](Database/0183-customers-who-never-order/) | Easy | Database | mysql |
 | 184 | [Department Highest Salary](Database/0184-department-highest-salary/) | Medium | Database | mysql |
 | 189 | [Rotate Array](Two%20Pointers/0189-rotate-array/) | Medium | Two Pointers | Java |
+| 191 | [Number of 1 Bits](Divide%20and%20Conquer/0191-number-of-1-bits/) | Easy | Divide and Conquer | Java |
 | 196 | [Delete Duplicate Emails](Database/0196-delete-duplicate-emails/) | Easy | Database | mysql |
 | 197 | [Rising Temperature](Database/0197-rising-temperature/) | Easy | Database | mysql |
 | 198 | [House Robber](Dynamic%20Programming/0198-house-robber/) | Medium | Dynamic Programming | java |
