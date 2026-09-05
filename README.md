@@ -4,9 +4,9 @@ _Synced by AILeetHub._
 
 <!-- AILEETHUB:START -->
 
-**271 problems solved**
+**272 problems solved**
 
-![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 112  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
+![Easy](https://img.shields.io/badge/Difficulty-Easy-00b8a3?style=flat-square) 149  ![Medium](https://img.shields.io/badge/Difficulty-Medium-ffc01e?style=flat-square) 113  ![Hard](https://img.shields.io/badge/Difficulty-Hard-ff375f?style=flat-square) 10
 
 | # | Problem | Difficulty | Topic | Language |
 | --- | --- | --- | --- | --- |
@@ -33,6 +33,7 @@ _Synced by AILeetHub._
 | 32 | [Longest Valid Parentheses](Dynamic%20Programming/0032-longest-valid-parentheses/) | Hard | Dynamic Programming | java |
 | 33 | [Search in Rotated Sorted Array](Binary%20Search/0033-search-in-rotated-sorted-array/) | Medium | Binary Search | java |
 | 35 | [Search Insert Position](Binary%20Search/0035-search-insert-position/) | Easy | Binary Search | java |
+| 38 | [Count and Say](String/0038-count-and-say/) | Medium | String | Java |
 | 42 | [Trapping Rain Water](Dynamic%20Programming/0042-trapping-rain-water/) | Hard | Dynamic Programming | java |
 | 45 | [Jump Game II](Dynamic%20Programming/0045-jump-game-ii/) | Medium | Dynamic Programming | java |
 | 48 | [Rotate Image](Math/0048-rotate-image/) | Medium | Math | java |
